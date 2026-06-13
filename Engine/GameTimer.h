@@ -9,11 +9,11 @@ public:
 
 	void Tick();
 
-	double GetDeltaTime() const { return DeltaTime; }
+	float GetDeltaTime() const { return DeltaTime; }
 
 private:
 
-	double DeltaTime;
+	float DeltaTime;
 	double Frequency;
 
 	uint32 FrameCount;

@@ -14,7 +14,7 @@ public:
 
 	void ResizeWindow(int32 Width, int32 Height);
 
-	double GetDeltaTime() const { return Timer->GetDeltaTime(); }
+	float GetDeltaTime() const { return Timer->GetDeltaTime(); }
 
 	void OnKeyDown(WPARAM Key) { Input->OnKeyDown(Key); }
 	void OnKeyUp(WPARAM Key) { Input->OnKeyUp(Key); }
