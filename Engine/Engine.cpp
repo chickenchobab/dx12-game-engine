@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "Engine.h"
+#include "Player.h"
+#include "World.h"
 
 Engine::Engine()
 {
@@ -16,6 +18,9 @@ void Engine::Init(const WindowInfo& Info)
 	Window = Info;
 
 	ResizeWindow(Info.Width, Info.Height);
+	
+	CreateWorld();
+	CreatePlayerAndPawn();
 }
 
 void Engine::Tick()
@@ -40,4 +45,16 @@ void Engine::SetWindowString(const string& InString)
 	wstring Title(InString.begin(), InString.end());
 
 	SetWindowTextW(Window.HWnd, Title.c_str());
+}
+
+void Engine::CreateWorld()
+{
+	CurrentWorld = make_unique<World>();
+	CurrentWorld->InitWorld();
+}
+
+void Engine::CreatePlayerAndPawn()
+{
+	Players.push_back(make_unique<Player>());
+	Players.back()->InitPlayer(CurrentWorld->SpawnActor());
 }
